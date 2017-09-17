@@ -68,7 +68,7 @@ public abstract class AbstractTestCompression
         testCases.addAll(dataSets);
     }
 
-    @Test(dataProvider = "data")
+    @Test(dataProvider = "data", invocationCount = 1000000, threadPoolSize = 1000000)
     public void testDecompress(DataSet dataSet)
             throws Exception
     {
@@ -89,7 +89,7 @@ public abstract class AbstractTestCompression
         assertByteArraysEqual(uncompressed, 0, uncompressedSize, uncompressedOriginal, 0, uncompressedOriginal.length);
     }
 
-    @Test(dataProvider = "data")
+    @Test(dataProvider = "data", invocationCount = 1000000, threadPoolSize = 1000000)
     public void testDecompressByteBufferHeapToHeap(DataSet dataSet)
             throws Exception
     {
@@ -108,7 +108,7 @@ public abstract class AbstractTestCompression
         assertByteBufferEqual(ByteBuffer.wrap(uncompressedOriginal), uncompressed);
     }
 
-    @Test(dataProvider = "data")
+    @Test(dataProvider = "data", invocationCount = 1000000, threadPoolSize = 1000000)
     public void testDecompressByteBufferHeapToDirect(DataSet dataSet)
             throws Exception
     {
@@ -127,7 +127,7 @@ public abstract class AbstractTestCompression
         assertByteBufferEqual(ByteBuffer.wrap(uncompressedOriginal), uncompressed);
     }
 
-    @Test(dataProvider = "data")
+    @Test(dataProvider = "data", invocationCount = 1000000, threadPoolSize = 1000000)
     public void testDecompressByteBufferDirectToHeap(DataSet dataSet)
             throws Exception
     {
@@ -146,7 +146,7 @@ public abstract class AbstractTestCompression
         assertByteBufferEqual(ByteBuffer.wrap(uncompressedOriginal), uncompressed);
     }
 
-    @Test(dataProvider = "data")
+    @Test(dataProvider = "data", invocationCount = 1000000, threadPoolSize = 1000000)
     public void testDecompressByteBufferDirectToDirect(DataSet dataSet)
             throws Exception
     {
@@ -165,7 +165,7 @@ public abstract class AbstractTestCompression
         assertByteBufferEqual(ByteBuffer.wrap(uncompressedOriginal), uncompressed);
     }
 
-    @Test(dataProvider = "data")
+    @Test(dataProvider = "data", invocationCount = 1000000, threadPoolSize = 1000000)
     public void testCompress(DataSet testCase)
             throws Exception
     {
@@ -192,7 +192,7 @@ public abstract class AbstractTestCompression
         verifyCompressedData(originalUncompressed, compressed, compressedLength);
     }
 
-    @Test(dataProvider = "data")
+    @Test(dataProvider = "data", invocationCount = 1000000, threadPoolSize = 1000000)
     public void testCompressByteBufferHeapToHeap(DataSet dataSet)
             throws Exception
     {
@@ -210,7 +210,7 @@ public abstract class AbstractTestCompression
                 ByteBuffer.allocate(compressor.maxCompressedLength(uncompressedOriginal.length)));
     }
 
-    @Test(dataProvider = "data")
+    @Test(dataProvider = "data", invocationCount = 1000000, threadPoolSize = 1000000)
     public void testCompressByteBufferHeapToDirect(DataSet dataSet)
             throws Exception
     {
@@ -228,7 +228,7 @@ public abstract class AbstractTestCompression
                 ByteBuffer.allocateDirect(compressor.maxCompressedLength(uncompressedOriginal.length)));
     }
 
-    @Test(dataProvider = "data")
+    @Test(dataProvider = "data", invocationCount = 1000000, threadPoolSize = 1000000)
     public void testCompressByteBufferDirectToHeap(DataSet dataSet)
             throws Exception
     {
@@ -246,7 +246,7 @@ public abstract class AbstractTestCompression
                 ByteBuffer.allocate(compressor.maxCompressedLength(uncompressedOriginal.length)));
     }
 
-    @Test(dataProvider = "data")
+    @Test(dataProvider = "data", invocationCount = 1000000, threadPoolSize = 1000000)
     public void testCompressByteBufferDirectToDirect(DataSet dataSet)
             throws Exception
     {
@@ -294,7 +294,7 @@ public abstract class AbstractTestCompression
         assertByteArraysEqual(uncompressed, 0, uncompressedSize, originalUncompressed, 0, originalUncompressed.length);
     }
 
-    @Test
+    @Test(invocationCount = 1000000, threadPoolSize = 1000000)
     public void testRoundTripSmallLiteral()
             throws Exception
     {
